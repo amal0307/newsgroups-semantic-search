@@ -1,0 +1,28 @@
+# API
+fastapi
+uvicorn
+python-dotenv
+pydantic
+
+# Embeddings
+sentence-transformers
+torch
+
+# Vector Database
+qdrant-client
+
+# Clustering
+umap-learn
+scikit-fuzzy
+scikit-learn
+numpy
+scipy
+
+# Data processing
+pandas
+joblib
+
+# Notebook
+jupyter
+matplotlib
+seaborn

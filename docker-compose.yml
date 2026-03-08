@@ -1,0 +1,24 @@
+version: "3.9"
+
+services:
+  semantic-search:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: newsgroups-semantic-search
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONUNBUFFERED=1
+    # Mount embeddings and models as volumes so you can rebuild
+    # artifacts without rebuilding the entire Docker image
+    volumes:
+      - ./embeddings:/app/embeddings
+      - ./models:/app/models
+    restart: unless-stopped
+    healthcheck:
+      test: [ "CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
